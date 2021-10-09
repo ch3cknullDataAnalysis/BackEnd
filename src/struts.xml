@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+<package name="test" extends="struts-default" namespace="/">
+    <!--测试struts是否可以使用-->
+    <action name="test1" class="com.sdufe.dataAnalycs.test.Test" method="test1">
+        <result name="test1 is ok">index.jsp</result>
+    </action>
+
+<!--    测试struts2的ajax是否可以使用-->
+    <action name="test2" class="com.sdufe.dataAnalycs.test.Test" method="test2">
+        <result name="test2 is ok" type="stream">
+            <param name="contentType">text/html</param>
+            <param name="inputName">inputStream</param>
+        </result>
+    </action>
+</package>
+
+    <package name="dataAnalycs" extends="struts-default" namespace="/">
+        <!--返回数据分析结果-->
+        <action name="dataAnalycs" class="com.sdufe.dataAnalycs.web.DataAnalycs" method="getdataAnalycs">
+            <result name="ok" type="stream">
+                <param name="contentType">application/json</param>
+                <param name="inputName">inputStream</param>
+            </result>
+        </action>
+        <!--返回数据预测结果-->
+        <action name="dataPredict" class="com.sdufe.dataAnalycs.web.DataAnalycs" method="getDataPredict">
+            <result name="okk" type="stream">
+                <param name="contentType">application/json</param>
+                <param name="inputName">inputStream</param>
+            </result>
+        </action>
+    </package>
+
+</struts>
